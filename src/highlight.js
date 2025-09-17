@@ -1,7 +1,6 @@
 import { styleTags, tags as t } from "@lezer/highlight";
 
 export const jsonHighlighting = styleTags({
-  String: t.string,
   Number: t.number,
   "True False": t.bool,
   PropertyName: t.propertyName,
@@ -9,5 +8,6 @@ export const jsonHighlighting = styleTags({
   ", :": t.separator,
   "[ ]": t.squareBracket,
   "{ }": t.brace,
-  quote: t.punctuation,
+  Quote: t.punctuation,
+  StringContent: t.string,
 });

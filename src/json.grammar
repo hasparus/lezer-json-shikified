@@ -2,13 +2,12 @@
 
 value { True | False | Null | Number | String | Object | Array }
 
-String[isolate] { string }
+String[isolate] { Quote StringContent? Quote }
 Object { "{" list<Property>? "}" }
 Array  { "[" list<value>? "]" }
 
 Property { PropertyName ":" value }
-PropertyName[isolate] { string }
-
+PropertyName[isolate] { Quote StringContent? Quote }
 
 @tokens {
   True  { "true" }
@@ -20,9 +19,11 @@ PropertyName[isolate] { string }
   frac { '.' @digit+ }
   exp  { $[eE] $[+\-]? @digit+ }
 
-  quote { '"' }
-  string { quote char* quote }
-  char { $[\u{20}\u{21}\u{23}-\u{5b}\u{5d}-\u{10ffff}] | "\\" esc }
+  Quote { '"' }
+
+  @precedence { StringContent, whitespace }
+  StringContent { stringChar+ }
+  stringChar { $[\u{20}\u{21}\u{23}-\u{5b}\u{5d}-\u{10ffff}] | "\\" esc }
   esc  { $["\\\/bfnrt] | "u" hex hex hex hex }
   hex  { $[0-9a-fA-F] }
 
@@ -32,6 +33,7 @@ PropertyName[isolate] { string }
 }
 
 @skip { whitespace }
+
 list<item> { item ("," item)* }
 
 @external propSource jsonHighlighting from "./highlight"

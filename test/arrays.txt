@@ -12,7 +12,7 @@ JsonText(Array)
 
 ==>
 
-JsonText(Array(String))
+JsonText(Array(String(Quote,StringContent,Quote)))
 
 # Array With Multiple Values
 
@@ -27,8 +27,8 @@ JsonText(Array(String))
 ==>
 
 JsonText(Array(
-  String,
+  String(Quote,StringContent,Quote),
   Number,
   True,
   Object,
-  Array(String,String)))
+  Array(String(Quote,StringContent,Quote),String(Quote,StringContent,Quote))))
