@@ -9,5 +9,5 @@ export const jsonHighlighting = styleTags({
   "[ ]": t.squareBracket,
   "{ }": t.brace,
   Quote: t.punctuation,
-  StringContent: t.string,
+  String: t.string,
 });
