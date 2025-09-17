@@ -2,12 +2,12 @@
 
 value { True | False | Null | Number | String | Object | Array }
 
-String[isolate] { Quote StringContent? Quote }
+String[isolate] { Quote StringValue? Quote }
 Object { "{" list<Property>? "}" }
 Array  { "[" list<value>? "]" }
 
 Property { PropertyName ":" value }
-PropertyName[isolate] { Quote StringContent? Quote }
+PropertyName[isolate] { Quote PropertyIdentifier? Quote }
 
 @tokens {
   True  { "true" }
@@ -21,9 +21,13 @@ PropertyName[isolate] { Quote StringContent? Quote }
 
   Quote { '"' }
 
-  @precedence { StringContent, whitespace }
-  StringContent { stringChar+ }
-  stringChar { $[\u{20}\u{21}\u{23}-\u{5b}\u{5d}-\u{10ffff}] | "\\" esc }
+  @precedence { StringValue, whitespace }
+  StringValue { char+ }
+
+  @precedence { PropertyIdentifier, whitespace }
+  PropertyIdentifier { char+ }
+
+  char { $[\u{20}\u{21}\u{23}-\u{5b}\u{5d}-\u{10ffff}] | "\\" esc }
   esc  { $["\\\/bfnrt] | "u" hex hex hex hex }
   hex  { $[0-9a-fA-F] }
 

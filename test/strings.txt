@@ -12,7 +12,7 @@ JsonText(String(Quote,Quote))
 
 ==>
 
-JsonText(String(Quote,StringContent,Quote))
+JsonText(String(Quote,StringValue,Quote))
 
 # All The Valid One-Character Escapes
 
@@ -20,7 +20,7 @@ JsonText(String(Quote,StringContent,Quote))
 
 ==>
 
-JsonText(String(Quote,StringContent,Quote))
+JsonText(String(Quote,StringValue,Quote))
 
 # Unicode Escape
 
@@ -28,4 +28,4 @@ JsonText(String(Quote,StringContent,Quote))
 
 ==>
 
-JsonText(String(Quote,StringContent,Quote))
+JsonText(String(Quote,StringValue,Quote))
