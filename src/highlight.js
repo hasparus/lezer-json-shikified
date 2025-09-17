@@ -1,4 +1,4 @@
-import {styleTags, tags as t} from "@lezer/highlight"
+import { styleTags, tags as t } from "@lezer/highlight";
 
 export const jsonHighlighting = styleTags({
   String: t.string,
@@ -8,5 +8,6 @@ export const jsonHighlighting = styleTags({
   Null: t.null,
   ", :": t.separator,
   "[ ]": t.squareBracket,
-  "{ }": t.brace
-})
+  "{ }": t.brace,
+  quote: t.punctuation,
+});
